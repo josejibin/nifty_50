@@ -1,12 +1,11 @@
-import cherrypy
 import os
+
+import cherrypy
 from jinja2 import Environment, FileSystemLoader
 
+from nifty_scraper import write_to_redis, read_from_redis
 
 env = Environment(loader=FileSystemLoader('html'))
-
-
-from nifty_scraper import write_to_redis, read_from_redis
 
 
 class NiftyFifty(object):
@@ -23,7 +22,9 @@ class NiftyFifty(object):
 
 if __name__ == '__main__':
 
-    
+    # update redis every 5 minutes i.e 300 seconds
+    cherrypy.engine.housekeeper = cherrypy.process.plugins.BackgroundTask(300, write_to_redis)
+    cherrypy.engine.housekeeper.start()
 
     config = {
         'global': {
