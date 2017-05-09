@@ -8,8 +8,8 @@ import redis
 # todo
 # seperate settings for development and production
 # connect to redis
-# redis_connection = redis.StrictRedis(host='localhost', port=6379, db=0)
-redis_connection = redis.from_url(os.environ.get("REDIS_URL"))
+redis_connection = redis.StrictRedis(host='localhost', port=6379, db=0)
+#redis_connection = redis.from_url(os.environ.get("REDIS_URL"))
 
 
 def get_data():
@@ -41,7 +41,7 @@ def read_from_redis():
     if not time and not data:
         # todo
         # do we neet to wait
-        write_to_redis(redis_connection)
+        write_to_redis()
     else:
         time = time.decode("utf-8")
         data = json.loads(data.decode("utf-8"))
