@@ -33,5 +33,6 @@ Basic functionality completed
 * Insted of json fetching use selenium to scrap (selenium need some fixing on my computer. some geckodriver issues)
 * Update UI
 * Do we need to update inbetween 4 pm to 10 am ??
-
+* may be logs
+* tests
  
