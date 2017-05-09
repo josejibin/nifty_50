@@ -13,6 +13,13 @@ redis_connection = redis.from_url(os.environ.get("REDIS_URL"))
 
 
 def get_data():
+    """
+    fetch data from nseindia.com and return time and data as tuple
+
+    return:
+        time : string
+        data : dict
+    """
     url = "https://www.nseindia.com/live_market/dynaContent/live_analysis/gainers/niftyGainers1.json"
     response = requests.get(url)
     # todo
