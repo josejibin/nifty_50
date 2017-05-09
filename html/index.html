@@ -1,8 +1,28 @@
 {% extends "layout.html" %}
 {% block body %}
-    <ul>
-    {% for item in data %}
-        <li>{{ item }}</li>
-    {% endfor %}
-    </ul>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+	        <h3 class="text-center">Last updated on {{ time  }}</h3>
+	    </div>
+	</div>
+	{% for items in data | batch(3, '&nbsp;') %}
+	<div class="row">
+		{% for item in items %}
+	    <div class="col-md-4">
+	        <div class="j-card">
+	        	<h3><b>Symbol: </b>{{ item.symbol }}</h3>
+	        	<h3><b>Open Price: </b>{{item.openPrice}}</h3>
+	        	<h3><b>High Price: </b>{{item.highPrice}}</h3>
+	        	<h3><b>Low Price: </b>{{item.lowPrice}}</h3>
+	        	<h3><b>Previous Price: </b>{{item.previousPrice}}</h3>
+	        	<h3><b>Traded Quantity: </b>{{item.tradedQuantity}}</h3>
+	        </div>
+	    </div>
+	    {% endfor %}
+	</div>
+	{% endfor %}
+</div>
+
 {% endblock %}
