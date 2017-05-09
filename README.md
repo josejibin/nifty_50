@@ -27,6 +27,7 @@ Basic functionality completed
 
 #### pending :
 
+* No auto updation
 * Unwanted two cards in the last row
 * More deatils in card
 * Insted of json fetching use selenium to scrap (selenium need some fixing on my computer. some geckodriver issues)
