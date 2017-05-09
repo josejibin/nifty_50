@@ -1,9 +1,15 @@
-import requests
+import os
 import json
+
+import requests
 import redis
 
+
+# todo
+# seperate settings for development and production
 # connect to redis
-redis_connection = redis.StrictRedis(host='localhost', port=6379, db=0)
+# redis_connection = redis.StrictRedis(host='localhost', port=6379, db=0)
+redis_connection = redis.from_url(os.environ.get("REDIS_URL"))
 
 
 def get_data():
@@ -23,8 +29,9 @@ def write_to_redis():
         # redis storing as byte
         serialized_data = json.dumps(data)
         redis_connection.set('data', serialized_data)
-    except Exception as er:
-        print('Error updating results: {}'.format(er))
+        print('<<<<>>>>Data for time {} wrote to redis'.format(time))
+    except Exception as e:
+        print('<<<<>>>>Error when writing to redis: {}'.format(e))
 
 
 
