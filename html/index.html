@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-	        <h3 class="text-center">Last updated on {{ time  }}</h3>
+	        <h3 class="j-updated-at">Last updated on {{ time  }}</h3>
 	    </div>
 	</div>
 	{% for items in data | batch(3, '&nbsp;') %}
@@ -12,12 +12,12 @@
 		{% for item in items %}
 	    <div class="col-md-4">
 	        <div class="j-card">
-	        	<h3><b>Symbol: </b>{{ item.symbol }}</h3>
-	        	<h3><b>Open Price: </b>{{item.openPrice}}</h3>
-	        	<h3><b>High Price: </b>{{item.highPrice}}</h3>
-	        	<h3><b>Low Price: </b>{{item.lowPrice}}</h3>
-	        	<h3><b>Previous Price: </b>{{item.previousPrice}}</h3>
-	        	<h3><b>Traded Quantity: </b>{{item.tradedQuantity}}</h3>
+	        	<h4><b>Symbol: </b>{{ item.symbol }}</h4>
+	        	<h4><b>Open Price: </b>{{item.openPrice}}</h4>
+	        	<h4><b>High Price: </b>{{item.highPrice}}</h4>
+	        	<h4><b>Low Price: </b>{{item.lowPrice}}</h4>
+	        	<h4><b>Previous Price: </b>{{item.previousPrice}}</h4>
+	        	<h4><b>Traded Quantity: </b>{{item.tradedQuantity}}</h4>
 	        </div>
 	    </div>
 	    {% endfor %}
